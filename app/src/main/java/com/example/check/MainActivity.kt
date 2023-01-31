@@ -28,7 +28,9 @@ class MainActivity : AppCompatActivity() {
         }
         fun Funkcja2 (pass: CharSequence){
             val check2=findViewById<CheckBox>(R.id.CheckMalaLitera)
+            val malalitera=Pattern.compile(".*[a-z].*").matcher(pass).matches()
         }
+        fun Funkcja3
 
     }
 }
