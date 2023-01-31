@@ -12,9 +12,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val Submit=findViewById<Button>(R.id.SubmitButton)
-        val check3=findViewById<CheckBox>(R.id.CheckCyfra)
-        val check4=findViewById<CheckBox>(R.id.CheckZnakSpecjalny)
-        val check5=findViewById<CheckBox>(R.id.CheckZgodny)
         val haslo=findViewById<EditText>(R.id.haslo1).text.toString()
         val haslo1=findViewById<EditText>(R.id.haslo2).text.toString()
         fun Funkcja1 (pass: CharSequence){
@@ -37,6 +34,13 @@ class MainActivity : AppCompatActivity() {
             val znakspecjalny=Pattern.compile(".*[@!#$%^&*()_+-={};:'<>,.?/\\\"].*").matcher(pass).matches()
             check4.isChecked=znakspecjalny
         }
+        fun Funcja5 (pass: CharSequence,pass2: CharSequence){
+            val check5=findViewById<CheckBox>(R.id.CheckZgodny)
+            if(pass==pass2){
+                check5.isChecked=true
+            }
+        }
+
 
     }
 }
