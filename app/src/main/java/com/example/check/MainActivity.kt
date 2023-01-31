@@ -14,8 +14,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val Submit=findViewById<Button>(R.id.SubmitButton)
-
-        val check2=findViewById<CheckBox>(R.id.CheckMalaLitera)
         val check3=findViewById<CheckBox>(R.id.CheckCyfra)
         val check4=findViewById<CheckBox>(R.id.CheckZnakSpecjalny)
         val check5=findViewById<CheckBox>(R.id.CheckZgodny)
@@ -30,7 +28,13 @@ class MainActivity : AppCompatActivity() {
             val check2=findViewById<CheckBox>(R.id.CheckMalaLitera)
             val malalitera=Pattern.compile(".*[a-z].*").matcher(pass).matches()
         }
-        fun Funkcja3
+        fun Funkcja3 (pass: CharSequence){
+            val check3=findViewById<CheckBox>(R.id.CheckCyfra)
+            val cyfra=Pattern.compile(".*[0-9].*").matcher(pass).matches()
+        }
+        fun Funkcja4 (pass: CharSequence){
+
+        }
 
     }
 }
