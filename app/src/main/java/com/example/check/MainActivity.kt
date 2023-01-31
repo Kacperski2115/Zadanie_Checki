@@ -5,8 +5,6 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
-import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.*
 import java.util.regex.Pattern
 
 class MainActivity : AppCompatActivity() {
@@ -27,13 +25,17 @@ class MainActivity : AppCompatActivity() {
         fun Funkcja2 (pass: CharSequence){
             val check2=findViewById<CheckBox>(R.id.CheckMalaLitera)
             val malalitera=Pattern.compile(".*[a-z].*").matcher(pass).matches()
+            check2.isChecked=malalitera
         }
         fun Funkcja3 (pass: CharSequence){
             val check3=findViewById<CheckBox>(R.id.CheckCyfra)
             val cyfra=Pattern.compile(".*[0-9].*").matcher(pass).matches()
+            check3.isChecked=cyfra
         }
         fun Funkcja4 (pass: CharSequence){
-
+            val check4=findViewById<CheckBox>(R.id.CheckZnakSpecjalny)
+            val znakspecjalny=Pattern.compile(".*[@!#$%^&*()_+-={};:'<>,.?/\\\"].*").matcher(pass).matches()
+            check4.isChecked=znakspecjalny
         }
 
     }
