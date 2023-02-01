@@ -11,36 +11,33 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val Submit=findViewById<Button>(R.id.SubmitButton)
-        val haslo=findViewById<EditText>(R.id.haslo1).text.toString()
-        val haslo1=findViewById<EditText>(R.id.haslo2).text.toString()
-        fun Funkcja1 (pass: CharSequence){
-            val check1=findViewById<CheckBox>(R.id.CheckDuzaLitera)
-            val duzalitera=Pattern.compile(".*[A-Z].*").matcher(pass).matches()
-            check1.isChecked=duzalitera
-        }
-        fun Funkcja2 (pass: CharSequence){
-            val check2=findViewById<CheckBox>(R.id.CheckMalaLitera)
-            val malalitera=Pattern.compile(".*[a-z].*").matcher(pass).matches()
-            check2.isChecked=malalitera
-        }
-        fun Funkcja3 (pass: CharSequence){
-            val check3=findViewById<CheckBox>(R.id.CheckCyfra)
-            val cyfra=Pattern.compile(".*[0-9].*").matcher(pass).matches()
-            check3.isChecked=cyfra
-        }
-        fun Funkcja4 (pass: CharSequence){
-            val check4=findViewById<CheckBox>(R.id.CheckZnakSpecjalny)
-            val znakspecjalny=Pattern.compile(".*[@!#$%^&*()_+-={};:'<>,.?/\\\"].*").matcher(pass).matches()
-            check4.isChecked=znakspecjalny
-        }
-        fun Funcja5 (pass: CharSequence,pass2: CharSequence){
-            val check5=findViewById<CheckBox>(R.id.CheckZgodny)
-            if(pass==pass2){
-                check5.isChecked=true
-            }
-        }
+        fun Wymagania (pass: String,pass2: String){
 
+            val check1=findViewById<CheckBox>(R.id.CheckDuzaLitera)
+            check1.isChecked = Pattern.compile(".*[A-Z].*").matcher(pass).matches() ||
+                    Pattern.compile(".*[A-Z].*").matcher(pass2).matches()
+
+            val check2=findViewById<CheckBox>(R.id.CheckMalaLitera)
+            check2.isChecked = Pattern.compile(".*[a-z].*").matcher(pass).matches() ||
+                    Pattern.compile(".*[a-z].*").matcher(pass2).matches()
+
+            val check3=findViewById<CheckBox>(R.id.CheckCyfra)
+            check3.isChecked = Pattern.compile(".*\\d.*").matcher(pass).matches() ||
+                    Pattern.compile(".*\\d.*").matcher(pass2).matches()
+
+            val check4=findViewById<CheckBox>(R.id.CheckZnakSpecjalny)
+            check4.isChecked = Pattern.compile(".*[~!@#\$%^&*()_+{}\\\\[\\\\]:;,.<>/?-].*").matcher(pass).matches() ||
+                    Pattern.compile(".*[~!@#\$%^&*()_+{}\\\\[\\\\]:;,.<>/?-].*").matcher(pass2).matches()
+
+            val check5=findViewById<CheckBox>(R.id.CheckZgodny)
+            check5.isChecked = pass == pass2
+        }
+        val Submit=findViewById<Button>(R.id.SubmitButton)
+        val haslo=findViewById<EditText>(R.id.haslo1)
+        val haslo1=findViewById<EditText>(R.id.haslo2)
+        Submit.setOnClickListener {
+            Wymagania(haslo.text.toString(), haslo1.text.toString())
+        }
 
     }
 }
